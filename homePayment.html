@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Title</title>
+		<link rel="stylesheet" th:href="@{/style.css}"/>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+	<form method="post" action="/submitPaymentDetail">
+		<div class="container register">
+			<div class="row">
+				
+				<div class="col-md-4">
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane  show active" id="home" role="tabpanel">
+							<h1 class="register-heading">Pay With Paytm</h1>
+							<div class="row register-form">
+							<div class="customer-info-container">
+         <h3>Customer Information:</h3>
+         <ul>
+            <li>Name: <span th:utext="${myCart.customerInfo.name}"></span></li>
+            <li>Email: <span th:utext="${myCart.customerInfo.email}"></span></li>
+            <li>Phone: <span th:utext="${myCart.customerInfo.phone}"></span></li>
+            <li>Address: <span th:utext="${myCart.customerInfo.address}"></span></li>
+         </ul>
+        </div>
+							
+<div class="col-md-10">
+	<div class="form-group">
+	
+	ORDER_ID <input type="Id" readonly name="ORDER_ID" value="123" >
+									
+	CUST_ID <input type="text" readonly name="CUST_ID" th:value="${myCart.customerInfo.name}" > 
+									
+    INDUSTRY_TYPE_ID <input type="text" readonly name="INDUSTRY_TYPE_ID" value="Retail" >
+	
+	CHANNEL_ID<input type="text" readonly name="CHANNEL_ID" value="WEB" >
+	
+	TXN_AMOUNT<input type="text" readonly name="TXN_AMOUNT" th:value="${#numbers.formatDecimal(myCart.amountTotal, 0, 'COMMA', 2, 'POINT')}" >								
+						
+									<button type="submit" class="btnRegister" style="align : center">Pay Now</button>
+</div>
+</div>
+</div>
+</div>
+	
+				</div>
+			</div>
+		</div>
+	</form>
+	</body>
+	</html>

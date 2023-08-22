@@ -1,0 +1,52 @@
+ <div class="site-name"><center>Long Live MediCARE </center> </div>
+   <div class="header-container"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<div id="nav-bar">
+	<div id="nav-belt">
+		<div class="nav-fill">
+			<div id="nav-search">
+				<form id="nav-search-bar-form" th:action="@{/productList?name=}+${name}" method="get">
+					<div class="nav-left">
+						<a href="">ALL</a>
+					</div>
+					<div class="nav-fill">
+					<input type="text" name="name" th:value="${name}"  size="50" >
+						
+					</div>
+					<div class="nav-right">
+					<button type="submit" class="btn btn-info" >Search</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="nav-right">
+			<div id="nav-tools">
+				<a th:href="@{/}">Home</a>
+				<a href="/shoppingCart">Cart</a>
+				<a th:href="@{/productList}">Product List</a>
+				<th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+     			<a th:href="@{/orderList}">Order List </a> </th:block>
+                <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+      			<a th:href="@{/product}">  Create Product </a> </th:block>
+      			<th:block sec:authorize="!isAuthenticated()">
+         			<a th:href="@{/login}">Login</a>
+         			<a th:href="@{/register}">Register</a>
+      			</th:block>
+      			<th:block sec:authorize="isAuthenticated()">
+      			    Hello <a th:href="@{/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
+         			<a th:href="@{/logout}">Logout</a>
+      			</th:block>
+      			
+				
+  			</div>
+		</div>
+	</div>
+	<div id="nav-main">
+	</div>
+</div>
+
+			
+
+						
+						
